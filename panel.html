@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Панель</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+<header>
+    <label for="fileToLoad">Загрузить файл</label>
+    <input type="file" name="file" id="fileToLoad" accept=".txt" onchange="loadFileAsText()">
+    <table id="main-buttons">
+        <tr>
+            <td>Номер игры</td>
+            <td>
+                <input type="text" id="game-number-input" placeholder="ИГРА x / y">
+            </td>
+        </tr>
+        <tr>
+            <td>Игровая фаза</td>
+            <td>
+                <select id="game-phase-select">
+                    <option value="Раздача ролей">Раздача ролей</option>
+                    <option value="Договорка Мафии">Договорка Мафии</option>
+                    <option value="Свободная посадка">Свободная посадка</option>
+                    <option value="День">День</option>
+                    <option value="Ночь">Ночь</option>
+                    <option value="Дон ищет Шерифа">Дон ищет Шерифа</option>
+                    <option value="Шериф ищет Мафию">Шериф ищет Мафию</option>
+                    <option value="Техническая пауза">Техническая пауза</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+</header>
+<div class="main">
+    <table class="player-table">
+        <thead>
+        <tr>
+            <th>№</th>
+            <th>Никнейм</th>
+            <th colspan="3">Статус</th>
+            <th></th>
+            <th colspan="3">Роль</th>
+        </tr>
+        </thead>
+        <tbody id="player-rows"></tbody>
+        <tfoot>
+        <tr>
+            <td></td>
+            <td><button onclick="sendAllData()">Отправить</button></td>
+            <td colspan="3"><button onclick="clearStatus()">Сбросить</button></td>
+            <td></td>
+            <td colspan="3"><button onclick="clearRole()">Сбросить</button></td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+<!-- Модальное окно для ввода Лучшего хода (ЛХ) -->
+<div id="best-move-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Выберите три цифры для Лучшего хода (ЛХ):</p>
+        <div class="number-buttons-container">
+            <!-- Добавляем кнопки цифр -->
+            <div class="number-button" onclick="selectNumber(1)">1</div>
+            <div class="number-button" onclick="selectNumber(2)">2</div>
+            <div class="number-button" onclick="selectNumber(3)">3</div>
+            <div class="number-button" onclick="selectNumber(4)">4</div>
+            <div class="number-button" onclick="selectNumber(5)">5</div>
+            <div class="number-button" onclick="selectNumber(6)">6</div>
+            <div class="number-button" onclick="selectNumber(7)">7</div>
+            <div class="number-button" onclick="selectNumber(8)">8</div>
+            <div class="number-button" onclick="selectNumber(9)">9</div>
+            <div class="number-button" onclick="selectNumber(10)">10</div>
+        </div>
+        <button id="save-best-move">Сохранить</button>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
